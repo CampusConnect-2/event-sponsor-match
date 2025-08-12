@@ -1,7 +1,7 @@
 import { NavLink, Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Bookmark } from "lucide-react";
+import { Bookmark, Handshake } from "lucide-react";
 
 const navLinkClass = ({ isActive }: { isActive: boolean }) =>
   cn(
@@ -17,8 +17,8 @@ export default function Header() {
     <header className="sticky top-0 z-40 w-full border-b bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto flex h-14 items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
-          <div className="h-7 w-7 rounded-md bg-gradient-brand" aria-hidden />
-          <span className="font-semibold text-lg tracking-tight text-gradient-brand">CampusConnect</span>
+          <Handshake className="h-7 w-7" aria-hidden />
+          <span className="font-semibold text-lg tracking-tight">CampusConnect</span>
         </Link>
 
         <nav className="hidden md:flex items-center gap-1">

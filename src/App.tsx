@@ -26,9 +26,9 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/discover" element={<Discover />} />
-          <Route path="/post" element={<PostEvent />} />
-          <Route path="/inbox" element={<Inbox />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/post" element={<RequireAuth><PostEvent /></RequireAuth>} />
+          <Route path="/inbox" element={<RequireAuth><Inbox /></RequireAuth>} />
+          <Route path="/profile" element={<RequireAuth><Profile /></RequireAuth>} />
           <Route path="/saved" element={<Saved />} />
           <Route path="/events/:id" element={<EventDetails />} />
           <Route path="/auth" element={<Auth />} />
@@ -39,5 +39,18 @@ const App = () => (
     </TooltipProvider>
   </QueryClientProvider>
 );
+
+function RequireAuth({ children }: { children: React.ReactNode }) {
+  const isAuthed = typeof window !== 'undefined' && localStorage.getItem("cc_authed") === "true";
+  return isAuthed ? <>{children}</> : <AuthRedirect />;
+}
+
+function AuthRedirect() {
+  return (
+    <Routes>
+      <Route path="*" element={<Auth />} />
+    </Routes>
+  );
+}
 
 export default App;

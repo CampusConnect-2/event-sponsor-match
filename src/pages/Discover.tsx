@@ -28,7 +28,7 @@ export default function Discover() {
     <main className="container mx-auto pt-8 pb-14">
       <h1 className="sr-only">Discover Campus Events</h1>
 
-      <section aria-label="Filters" className="mb-6 rounded-lg border bg-card p-4">
+      <section aria-label="Filters" className="mb-14 rounded-lg border bg-card p-4">
         <div className="grid md:grid-cols-4 gap-4">
           <Input placeholder="Search events" value={query} onChange={(e) => setQuery(e.target.value)} />
           <Input placeholder="Location" value={location} onChange={(e) => setLocation(e.target.value)} />

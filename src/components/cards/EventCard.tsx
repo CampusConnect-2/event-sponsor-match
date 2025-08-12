@@ -26,7 +26,7 @@ export function EventCard({ e, onSave, saved }: { e: Event; onSave?: (id: string
   const dateFmt = d.toLocaleDateString(undefined, { month: "short", day: "numeric" });
 
   return (
-    <article className="group relative overflow-hidden rounded-lg border bg-card text-card-foreground shadow-sm transition hover:shadow-lg">
+    <article className="group relative overflow-hidden rounded-lg border bg-card text-card-foreground shadow transition hover:shadow-lg">
       {e.poster && (
         <img
           src={e.poster}

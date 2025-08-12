@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { sampleEvents } from "@/data/sample";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -6,6 +6,7 @@ import { useToast } from "@/hooks/use-toast";
 
 export default function EventDetails() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const { toast } = useToast();
   const e = sampleEvents.find((x) => x.id === id);
 
@@ -53,7 +54,14 @@ export default function EventDetails() {
             <p className="text-sm">{e.organiser.name} • {e.organiser.college}</p>
           </div>
           <div className="rounded-lg border p-4 space-y-3">
-            <Button className="w-full" onClick={() => toast({ title: "Interest sent (demo)", description: "Connect Supabase to enable messaging" })}>Send Interest</Button>
+            <Button className="w-full" onClick={() => {
+              const authed = localStorage.getItem("cc_authed") === "true";
+              if (!authed) {
+                navigate("/auth");
+                return;
+              }
+              toast({ title: "Interest sent (demo)", description: "Connect Supabase to enable messaging" });
+            }}>Send Interest</Button>
             <Button asChild variant="outline" className="w-full"><Link to="/discover">Back to Discover</Link></Button>
           </div>
         </aside>

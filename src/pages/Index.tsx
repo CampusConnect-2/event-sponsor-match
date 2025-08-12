@@ -9,10 +9,10 @@ const Index = () => {
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           <div className="space-y-6">
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
-              CampusConnect — Verified student events meet the right sponsors
+              CampusConnect — Big Ideas meet Bigger Backers
             </h1>
             <p className="text-lg text-muted-foreground">
-              Replace cold emails with a clean matching system. Students post events, sponsors discover opportunities, and both sides connect with trust.
+              Bridging students and sponsors to power the next big campus experience.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link to="/discover"><Button variant="hero" size="lg">Discover Events</Button></Link>

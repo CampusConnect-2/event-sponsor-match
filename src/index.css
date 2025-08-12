@@ -5,17 +5,17 @@
 /* Design system — HSL tokens */
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 45 66% 94%; /* Cream #FAF5E6 */
+    --foreground: 0 0% 20%; /* Dark Grey #333333 */
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 0 0% 20%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 0 0% 20%;
 
-    --primary: 251 80% 54%; /* brand base (indigo/violet) */
-    --primary-foreground: 210 40% 98%;
+    --primary: 0 0% 20%; /* Dark Grey */
+    --primary-foreground: 45 66% 94%; /* Cream */
 
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
@@ -23,15 +23,15 @@
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 216 14% 39%; /* Muted Slate #556070 */
+    --accent-foreground: 210 40% 98%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --ring: 0 0% 20%;
 
     --radius: 0.75rem;
 
@@ -100,7 +100,7 @@
 
 @layer base {
   * { @apply border-border; }
-  body { @apply bg-background text-foreground; }
+  body { @apply bg-background text-foreground font-inter; }
 }
 
 /* Utilities — gradient and shadows using tokens */
