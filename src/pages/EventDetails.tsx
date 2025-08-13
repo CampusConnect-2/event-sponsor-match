@@ -49,11 +49,11 @@ export default function EventDetails() {
         </div>
 
         <aside className="md:col-span-1 space-y-4">
-          <div className="rounded-lg border p-4">
+          <div className="rounded-lg border bg-card p-4">
             <h3 className="font-medium mb-1">Organiser</h3>
             <p className="text-sm">{e.organiser.name} • {e.organiser.college}</p>
           </div>
-          <div className="rounded-lg border p-4 space-y-3">
+          <div className="rounded-lg border bg-card p-4 space-y-3">
             <Button className="w-full" onClick={() => {
               const authed = localStorage.getItem("cc_authed") === "true";
               if (!authed) {

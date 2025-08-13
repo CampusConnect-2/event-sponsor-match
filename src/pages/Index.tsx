@@ -1,6 +1,7 @@
 import heroImage from "@/assets/hero-campusconnect.jpg";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { Mail, ShieldCheck, SlidersHorizontal, Bookmark } from "lucide-react";
 
 const Index = () => {
   return (
@@ -8,7 +9,7 @@ const Index = () => {
       <section className="container mx-auto pt-14 md:pt-20">
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           <div className="space-y-6">
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight -tracking-[0.01em]">
               CampusConnect — Big Ideas meet Bigger Backers
             </h1>
             <p className="text-lg text-muted-foreground">
@@ -18,11 +19,24 @@ const Index = () => {
               <Link to="/discover"><Button variant="hero" size="lg">Discover Events</Button></Link>
               <Link to="/post"><Button variant="outline" size="lg">Post an Event</Button></Link>
             </div>
-            <ul className="text-sm text-muted-foreground grid gap-2">
-              <li>• Email + OTP sign-in (connect Supabase to enable)</li>
-              <li>• Verified badges for .edu and company domains</li>
-              <li>• Smart filters, interest requests, and bookmarks</li>
-            </ul>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+              <div className="group rounded-lg border bg-card/50 backdrop-blur px-4 py-3 shadow-md hover:shadow-lg transition hover:border-primary/40 hover:-translate-y-0.5 flex items-start gap-3">
+                <Mail className="h-5 w-5 text-muted-foreground transition group-hover:text-primary" aria-hidden />
+                <div className="text-base font-semibold">Email + OTP sign-in (connect Supabase to enable)</div>
+              </div>
+              <div className="group rounded-lg border bg-card/50 backdrop-blur px-4 py-3 shadow-md hover:shadow-lg transition hover:border-primary/40 hover:-translate-y-0.5 flex items-start gap-3">
+                <ShieldCheck className="h-5 w-5 text-muted-foreground transition group-hover:text-primary" aria-hidden />
+                <div className="text-[15px]">Verified badges for .edu and company domains</div>
+              </div>
+              <div className="group rounded-lg border bg-card/50 backdrop-blur px-4 py-3 shadow-md hover:shadow-lg transition hover:border-primary/40 hover:-translate-y-0.5 flex items-start gap-3">
+                <SlidersHorizontal className="h-5 w-5 text-muted-foreground transition group-hover:text-primary" aria-hidden />
+                <div className="text-[14.5px]">Smart filters</div>
+              </div>
+              <div className="group rounded-lg border bg-card/50 backdrop-blur px-4 py-3 shadow-md hover:shadow-lg transition hover:border-primary/40 hover:-translate-y-0.5 flex items-start gap-3">
+                <Bookmark className="h-5 w-5 text-muted-foreground transition group-hover:text-primary" aria-hidden />
+                <div className="text-sm">Interest requests & bookmarks</div>
+              </div>
+            </div>
           </div>
           <div className="relative">
             <img src={heroImage} alt="Students collaborating with sponsors at a campus event" className="w-full h-auto rounded-xl shadow-brand-lg" />

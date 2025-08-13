@@ -5,8 +5,10 @@ import { Bookmark, Handshake } from "lucide-react";
 
 const navLinkClass = ({ isActive }: { isActive: boolean }) =>
   cn(
-    "px-3 py-2 text-sm rounded-md transition-colors",
-    isActive ? "bg-accent text-accent-foreground" : "hover:bg-accent/60"
+    "relative px-3 py-2 text-sm rounded-md transition-colors hover:bg-accent/15",
+    isActive
+      ? "text-primary drop-shadow-[0_0_8px_hsl(var(--brand-start)/0.35)] after:content-[''] after:absolute after:left-3 after:right-3 after:-bottom-1 after:h-0.5 after:bg-primary after:rounded-full"
+      : "hover:text-foreground/90"
   );
 
 export default function Header() {

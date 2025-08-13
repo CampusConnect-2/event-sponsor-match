@@ -4,51 +4,54 @@
 
 /* Design system — HSL tokens */
 @layer base {
-  :root {
-    --background: 45 66% 94%; /* Cream #FAF5E6 */
-    --foreground: 0 0% 20%; /* Dark Grey #333333 */
+:root {
+    /* Dark glossy theme (Better-Stack style) */
+    --background: 222 45% 7%;            /* #0B0F19 */
+    --foreground: 225 20% 92%;           /* #E6E8F0 */
 
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 20%;
+    /* Surfaces */
+    --card: 224 43% 10%;                 /* #0F1424 */
+    --card-foreground: 225 20% 92%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 20%;
+    --popover: 222 25% 15%;              /* #111827 */
+    --popover-foreground: 225 20% 92%;
 
-    --primary: 0 0% 20%; /* Dark Grey */
-    --primary-foreground: 45 66% 94%; /* Cream */
+    /* Brand / Accent */
+    --primary: 244 85% 68%;              /* #6E6BF2 */
+    --primary-foreground: 225 35% 96%;   /* near-white for contrast */
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 222 25% 19%;
+    --secondary-foreground: 225 20% 92%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 220 15% 28%;
+    --muted-foreground: 215 20% 66%;     /* #94A3B8 */
 
-    --accent: 216 14% 39%; /* Muted Slate #556070 */
-    --accent-foreground: 210 40% 98%;
+    --accent: 244 85% 68%;               /* use same as primary for links/focus */
+    --accent-foreground: 225 35% 96%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 0 0% 20%;
+    --border: 221 22% 16%;               /* #1F2433 */
+    --input: 221 22% 16%;
+    --ring: 244 85% 70%;                 /* Accent focus ring */
 
-    --radius: 0.75rem;
+    --radius: 0.75rem; /* 12px */
 
     /* Sidebar */
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 222 45% 7%;
+    --sidebar-foreground: 225 20% 92%;
+    --sidebar-primary: 244 85% 68%;
+    --sidebar-primary-foreground: 225 35% 96%;
+    --sidebar-accent: 222 25% 15%;
+    --sidebar-accent-foreground: 225 20% 92%;
+    --sidebar-border: 221 22% 16%;
+    --sidebar-ring: 244 85% 70%;
 
     /* Brand extensions */
-    --brand-start: 251 80% 54%;
-    --brand-end: 292 78% 61%;
-    --brand-glow: 260 100% 80%;
+    --brand-start: 244 85% 68%;          /* indigo-violet */
+    --brand-end: 260 85% 72%;
+    --brand-glow: 244 85% 72%;
 
     /* Motion */
     --transition-smooth: all 200ms cubic-bezier(0.22, 1, 0.36, 1);
@@ -116,9 +119,13 @@
   }
   .shadow-brand { box-shadow: 0 8px 24px hsl(var(--brand-start) / 0.25); }
   .shadow-brand-lg { box-shadow: 0 16px 40px hsl(var(--brand-end) / 0.35); }
-  .bg-gradient-subtle {
-    background: radial-gradient(80% 60% at 10% 10%, hsl(var(--brand-start) / 0.08), transparent 60%),
-                radial-gradient(60% 50% at 90% 10%, hsl(var(--brand-end) / 0.08), transparent 60%);
+.bg-gradient-subtle {
+    background:
+      radial-gradient(60% 40% at 0% 0%, hsl(var(--brand-start) / 0.12), transparent 60%),
+      radial-gradient(50% 35% at 100% 0%, hsl(var(--brand-end) / 0.10), transparent 60%),
+      radial-gradient(60% 40% at 100% 100%, hsl(var(--brand-start) / 0.08), transparent 60%),
+      radial-gradient(50% 35% at 0% 100%, hsl(var(--brand-end) / 0.08), transparent 60%),
+      linear-gradient(180deg, hsl(var(--background)), hsl(var(--background)));
   }
 }
 
