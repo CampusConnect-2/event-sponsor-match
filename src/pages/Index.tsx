@@ -10,7 +10,8 @@ const Index = () => {
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           <div className="space-y-6">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight -tracking-[0.015em] leading-tight">
-              CampusConnect — Big Ideas meet Bigger Backers
+              <span className="block text-4xl md:text-5xl lg:text-6xl">CampusConnect —</span>
+              <span className="block text-3xl md:text-4xl lg:text-5xl">Big Ideas meet Bigger Backers</span>
             </h1>
             <p className="text-lg text-muted-foreground">
               Bridging students and sponsors to power the next big campus experience.
