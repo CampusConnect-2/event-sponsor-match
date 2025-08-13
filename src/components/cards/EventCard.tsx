@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Bookmark } from "lucide-react";
+import heroFallback from "@/assets/hero-campusconnect.jpg";
 
 export type Event = {
   id: string;
@@ -24,17 +25,21 @@ export type Event = {
 export function EventCard({ e, onSave, saved }: { e: Event; onSave?: (id: string) => void; saved?: boolean }) {
   const d = new Date(e.date);
   const dateFmt = d.toLocaleDateString(undefined, { month: "short", day: "numeric" });
+  const sponsorLounge = "/lovable-uploads/30ef4415-0eb3-4520-8f19-60f070e8558c.png";
+  const posterSrc = e.poster ?? sponsorLounge;
 
   return (
     <article className="group relative overflow-hidden rounded-lg border bg-card text-card-foreground shadow-md transition hover:-translate-y-0.5 hover:shadow-lg hover:border-primary/40">
-      {e.poster && (
-        <img
-          src={e.poster}
-          alt={`${e.title} event poster at ${e.organiser.college ?? e.location}`}
-          loading="lazy"
-          className="h-40 w-full object-cover"
-        />
-      )}
+      <img
+        src={posterSrc}
+        alt={`${e.title} poster`}
+        loading="lazy"
+        className="w-full aspect-[16/9] object-cover"
+        onError={(e) => {
+          e.currentTarget.onerror = null;
+          e.currentTarget.src = heroFallback;
+        }}
+      />
 
       <div className="p-4 space-y-3">
         <div className="flex items-center justify-between gap-2">
