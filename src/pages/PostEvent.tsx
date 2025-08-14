@@ -3,12 +3,18 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 export default function PostEvent() {
   const { toast } = useToast();
+  const { user } = useAuth();
+  const navigate = useNavigate();
   const [packages, setPackages] = useState<string[]>([]);
   const [benefits, setBenefits] = useState<string[]>([]);
   const [tags, setTags] = useState<string[]>([]);
+  const [loading, setLoading] = useState(false);
 
   const addTo = (setter: Dispatch<SetStateAction<string[]>>, value: string) => {
     if (!value) return;
@@ -18,9 +24,47 @@ export default function PostEvent() {
     setter((arr) => arr.filter((_, i) => i !== idx));
   };
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    toast({ title: "Event drafted locally", description: "Connect Supabase to enable real posting." });
+    if (!user) return;
+
+    const formData = new FormData(e.currentTarget);
+    setLoading(true);
+
+    try {
+      const { error } = await supabase
+        .from('events')
+        .insert({
+          user_id: user.id,
+          title: formData.get('title') as string,
+          description: formData.get('description') as string,
+          event_date: formData.get('date') ? new Date(formData.get('date') as string).toISOString() : null,
+          location: formData.get('location') as string,
+          poster_url: formData.get('poster') as string,
+          image_url: (formData.get('poster') as string) || '/lovable-uploads/30ef4415-0eb3-4520-8f19-60f070e8558c.png',
+          packages,
+          benefits,
+          tags
+        });
+
+      if (error) throw error;
+
+      toast({ 
+        title: "Event created!", 
+        description: "Your event has been published successfully." 
+      });
+      
+      navigate('/discover');
+    } catch (error) {
+      console.error('Error creating event:', error);
+      toast({ 
+        title: "Error", 
+        description: "Failed to create event. Please try again.",
+        variant: "destructive"
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -42,7 +86,9 @@ export default function PostEvent() {
           <FieldList label="Sponsorship packages" items={packages} onAdd={(v) => addTo(setPackages, v)} onRemove={(i) => removeAt(setPackages, i)} />
           <FieldList label="Benefits for sponsors" items={benefits} onAdd={(v) => addTo(setBenefits, v)} onRemove={(i) => removeAt(setBenefits, i)} />
           <FieldList label="Tags (tech, cultural, sports, etc.)" items={tags} onAdd={(v) => addTo(setTags, v)} onRemove={(i) => removeAt(setTags, i)} />
-          <Button type="submit" variant="hero" className="w-full">Save Draft</Button>
+          <Button type="submit" variant="hero" className="w-full" disabled={loading}>
+            {loading ? "Creating Event..." : "Create Event"}
+          </Button>
         </div>
       </form>
     </main>
